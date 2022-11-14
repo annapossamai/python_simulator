@@ -90,6 +90,9 @@ def find_golden_token():
         return distG, rotG_y, codeG
 
 def GoToGolden():
+    """
+    Function to check the presence of the closest golden token and to release the silver token near to the golden token found.
+    """
     a=1
     while a==1:
         distG, rotG_y, codeG= find_golden_token()
@@ -125,21 +128,31 @@ def GoToGolden():
             print("golden era in lista!", listG)
             turn(2,0.5)         
 
+#The first step is the control of the variable `cont` that indicates the number of steps 
+#necessary to reach a more than 360 degrees angle (at the setted speed and seconds (20,0.5)). 
+#This allows to have at least a 360 degrees view of the arena.
+
+
+#The program starts with the initialization of two vector lists ( `listS`, `listG`) 
+#and a control variable (`cont`).The list `listS` registers the silver token grabbed by the robot
+#and  the `listG` registers the golden token near the silver token released.
 
 cont=0      #counter for ending the program (it counts how many turns the robot does without see anything)
 listS=[]
 listG=[]
 while 1:
-    if (cont==12):      #12 is the number of step to reach a >360 degree at the setted speed and seconds (20,0.5)
+    if (cont==12):  #`cont` that indicates the number of steps necessary to reach a more than 360 degrees angle (at the setted speed and seconds (20,0.5)). 
+                    #This allows to have at least a 360 degrees view of the arena.     
         print("END")
         exit()
-    dist, rot_y, codeS= find_silver_token()
-    if codeS not in listS:
-        if dist==-1:
+    dist, rot_y, codeS= find_silver_token() #the robot find the closest silver token 
+    if codeS not in listS:     # to avoid bringing silver token already paired. 
+        if dist==-1:    #If the robot can't see any silver token (`dist=-1`) then it will turn and the counter will increase its value.
             print("I don't see any silver token!")
             turn(20,0.5)
             cont=cont+1
-        elif dist<d_th:
+        #The following "elif" are more steps to check the proximity of the silver token.
+        elif dist<d_th: # the robot is well aligned with the token
             print("I found a silver token!")
             cont=0
             if R.grab():
