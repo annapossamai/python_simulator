@@ -1,16 +1,14 @@
-Python Robotics Simulator
-================================
+RUNNING THE CODE
 
-This is a simple, portable robot simulator developed by [Student Robotics](https://studentrobotics.org).
-Some of the arenas and the exercises have been modified for the Research Track I course
+The simulator requires a Python 2.7 installation, the pygame library, PyPyBox2D, and PyYAML.
+Once the dependencies are installed, simply run the test.py script to test out the simulator as: python2 run.py file.py where file.py contains the code.
 
-Installing and running
+-------------------------------
+GOAL OF THE ASSIGNMENT
+
+The goal of this assignment is to make a robot find a silver box in the environment and put this silver box close to a golden box. The final goal is to have silver and golden boxes distribuited in pairs.
 ----------------------
-
-The simulator requires a Python 2.7 installation, the [pygame](http://pygame.org/) library, [PyPyBox2D](https://pypi.python.org/pypi/pypybox2d/2.1-r331), and [PyYAML](https://pypi.python.org/pypi/PyYAML/).
-
-Once the dependencies are installed, simply run the `test.py` script to test out the simulator.
-
+ROBOT
 
 Robot API
 ---------
@@ -37,6 +35,8 @@ success = R.grab()
 ```
 
 The `R.grab` function returns `True` if a token was successfully picked up, or `False` otherwise. If the robot is already holding a token, it will throw an `AlreadyHoldingSomethingException`.
+The piece of code used is:
+
 
 To drop the token, call the `R.release` method.
 
@@ -61,17 +61,6 @@ Each `Marker` object has the following attributes:
 * `rot_y`: an alias for `centre.rot_y`
 * `timestamp`: the time at which the marker was seen (when `R.see` was called).
 
-For example, the following code lists all of the markers the robot can see:
 
-```python
-markers = R.see()
-print "I can see", len(markers), "markers:"
-
-for m in markers:
-    if m.info.marker_type in (MARKER_TOKEN_GOLD, MARKER_TOKEN_SILVER):
-        print " - Token {0} is {1} metres away".format( m.info.offset, m.dist )
-    elif m.info.marker_type == MARKER_ARENA:
-        print " - Arena marker {0} is {1} metres away".format( m.info.offset, m.dist )
-```
 
 [sr-api]: https://studentrobotics.org/docs/programming/sr/
