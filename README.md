@@ -1,14 +1,44 @@
-RUNNING THE CODE
+Python Robotics Simulator
+================================
 
-The simulator requires a Python 2.7 installation, the pygame library, PyPyBox2D, and PyYAML.
-Once the dependencies are installed, simply run the test.py script to test out the simulator as: python2 run.py file.py where file.py contains the code.
+This is a simple, portable robot simulator developed by [Student Robotics](https://studentrobotics.org).
+Some of the arenas and the exercises have been modified for the Research Track I course
 
--------------------------------
-GOAL OF THE ASSIGNMENT
-
-The goal of this assignment is to make a robot find a silver box in the environment and put this silver box close to a golden box. The final goal is to have silver and golden boxes distribuited in pairs.
+Installing and running
 ----------------------
-ROBOT
+
+The simulator requires a Python 2.7 installation, the [pygame](http://pygame.org/) library, [PyPyBox2D](https://pypi.python.org/pypi/pypybox2d/2.1-r331), and [PyYAML](https://pypi.python.org/pypi/PyYAML/).
+
+Pygame, unfortunately, can be tricky (though [not impossible](http://askubuntu.com/q/312767)) to install in virtual environments. If you are using `pip`, you might try `pip install hg+https://bitbucket.org/pygame/pygame`, or you could use your operating system's package manager. Windows users could use [Portable Python](http://portablepython.com/). PyPyBox2D and PyYAML are more forgiving, and should install just fine using `pip` or `easy_install`.
+
+## Troubleshooting
+
+When running `python run.py <file>`, you may be presented with an error: `ImportError: No module named 'robot'`. This may be due to a conflict between sr.tools and sr.robot. To resolve, symlink simulator/sr/robot to the location of sr.tools.
+
+On Ubuntu, this can be accomplished by:
+* Find the location of srtools: `pip show sr.tools`
+* Get the location. In my case this was `/usr/local/lib/python2.7/dist-packages`
+* Create symlink: `ln -s path/to/simulator/sr/robot /usr/local/lib/python2.7/dist-packages/sr/`
+
+## Exercise
+-----------------------------
+
+To run one or more scripts in the simulator, use `run.py`, passing it the file names. 
+
+I am proposing you three exercises, with an increasing level of difficulty.
+The instruction for the three exercises can be found inside the .py files (exercise1.py, exercise2.py, exercise3.py).
+
+When done, you can run the program with:
+
+```bash
+$ python run.py exercise1.py
+```
+
+You have also the solutions of the exercises (folder solutions)
+
+```bash
+$ python run.py solutions/exercise1_solution.py
+```
 
 Robot API
 ---------
@@ -35,8 +65,6 @@ success = R.grab()
 ```
 
 The `R.grab` function returns `True` if a token was successfully picked up, or `False` otherwise. If the robot is already holding a token, it will throw an `AlreadyHoldingSomethingException`.
-The piece of code used is:
-
 
 To drop the token, call the `R.release` method.
 
@@ -61,6 +89,17 @@ Each `Marker` object has the following attributes:
 * `rot_y`: an alias for `centre.rot_y`
 * `timestamp`: the time at which the marker was seen (when `R.see` was called).
 
+For example, the following code lists all of the markers the robot can see:
 
+```python
+markers = R.see()
+print "I can see", len(markers), "markers:"
+
+for m in markers:
+    if m.info.marker_type in (MARKER_TOKEN_GOLD, MARKER_TOKEN_SILVER):
+        print " - Token {0} is {1} metres away".format( m.info.offset, m.dist )
+    elif m.info.marker_type == MARKER_ARENA:
+        print " - Arena marker {0} is {1} metres away".format( m.info.offset, m.dist )
+```
 
 [sr-api]: https://studentrobotics.org/docs/programming/sr/
