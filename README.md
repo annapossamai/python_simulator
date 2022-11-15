@@ -75,7 +75,7 @@ Each `Marker` object has the following attributes:
 ![Flowchart](FinalFlowchart.png )
 
 
-At the beginning the program looks for the nearest silver token with the function:
+At the beginning the program looks for (with `R.see()` function) the nearest silver token with the function:
 ```python    
 dist, rot_y, codeS = find_silver_token()
 ```
@@ -83,19 +83,17 @@ Once it has checked that the `codeS` of the silver token is not in `listS`, the 
 
 When the robot is close to the silver token, it grabs it (via the `R.grab()` command) and goes to the nearest golden token (via the `GoToGolden()` function).
 
-```python    
-  GoToGolden()
-```
 The `GoToGolden` function works like this:
-1. First it searches for the nearest golden;
-2. Then, once it has been checked that the codeG is not in the listG, the robot approaches the found golden token in the same way used to approach the silver token;
+1. First it searches for the nearest golden token;
+2. Then, once it has been checked that the `codeG` is not in the `listG`, the robot approaches the found golden token in the same way used to approach the silver token;
 3. Finally, when the robot is close to the golden token, it releases the silver token with the function `R.Release()`, then registers the golden token in listG, and so it moves away.
 
-These functions are iterated within the `while()` loops in the program until the robot sees all the blocks paired once it has turned at least 360° (this condition occurs when `cont==12`).
+These functions are iterated within the `while()` loops in the program until the robot sees all the blocks paired once it has turned at least 360° (this condition is improved by a counter (`cont`)).
 
-Finally, when `cont==12`, the program ends.
+Finally, when the counter reaches the set threshold, the program ends.
 
 ## *FUTURE IMPROVEMENTS*
+
 In some positions, when blocks are in the middle of the robot's 'moving area, it could drag these tokens with it, creating **collisions**.
 
 To avoid this, special functions could be created to increasing its "**environmental awareness**".

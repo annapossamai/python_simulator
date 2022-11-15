@@ -138,13 +138,13 @@ while 1:
         print("END")
         exit()
     dist, rot_y, codeS= find_silver_token()    # the robot find the closest silver token 
-    if codeS not in listS:  # control to avoid bringing silver token already paired. 
-        if dist==-1:        # if the robot can't see any silver token (`dist=-1`) then it will turn and the counter will increase its value.
-            print("I don't see any silver token!")
-            turn(30,0.5)
-            cont=cont+1
-        # The following "elif" are steps to check the proximity of the found silver token.
-        elif dist<d_th: # when the robot is close to the silver token, it grabs it and goes to the nearest golden token (via GoToGolden()) and then it moves away
+    if dist==-1:        # if the robot can't see any silver token (`dist=-1`) then it will turn and the counter will increase its value.
+        print("I don't see any silver token!")
+        turn(30,0.5)
+        cont=cont+1
+    elif codeS not in listS:  # control to avoid bringing silver token already paired. 
+        # The following "if" are steps to check the proximity of the found silver token.
+        if dist<d_th: # when the robot is close to the silver token, it grabs it and goes to the nearest golden token (via GoToGolden()) and then it moves away
             print("I found a silver token!")
             cont=0
             if R.grab():
@@ -164,7 +164,7 @@ while 1:
             turn(2,0.5)
         else:
             print("Maybe there is a problem!")      # Flag for debug
-    else:   # if codeS is in listS then the robot will turn and the couner will increase its value
+    else:   # if codeS is in listS then the robot will turn and the counter will increase its value
         print("Already associated!")
         turn(20,0.5)
         cont=cont+1
