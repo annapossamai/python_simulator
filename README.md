@@ -102,7 +102,7 @@ To avoid this, special functions could be created to increasing its "**environme
 
 In addition, when the robot searches for the nearest block, if the block is close but behind the robot itself, the robot cannot see it. If, on the other hand, the robot had **360-degree vision**, then it would be able to see it and catch it, making the program more efficient.
 
-Another possible improvement could be to create a map of the arena. If the robot could record the positions of the various tokens in the arena by creating a map of the arena itself, it would be much faster because it would no longer be necessary to scan the arena within each while cycle. 
-This would also allow a better path management, e.g. avoiding obstacles (represented in this case by the tokens themselves).
+Another possible improvement could be to create a **map of the arena**. If the robot could record the positions of the various tokens in the arena by creating a map of the arena itself, it would be much faster because it would no longer be necessary to scan the arena within each while cycle. 
+This would also allow a better **path management**, e.g. avoiding obstacles (represented in this case by the tokens themselves).
  
 Therefore, in order to achieve these improvements, as well as appropriate functions, it could be necessary to **increase the robot's vision range**.
