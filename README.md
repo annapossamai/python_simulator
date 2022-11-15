@@ -1,11 +1,10 @@
 
-# PYTHON ROBOT SIMULATOR
+# *PYTHON ROBOT SIMULATOR*
 
 > Professor Carmine Recchiuto, <p>Student: Anna Possamai
 
 
-## RUNNING THE CODE
-------
+## *RUNNING THE CODE*
 The simulator requires a Python 2.7 installation, the pygame library, PyPyBox2D, and PyYAML.
 
 You can run this project by write in the terminal this command:
@@ -13,19 +12,19 @@ You can run this project by write in the terminal this command:
 $ python run.py Assignment.py
 ```
 
-## ASSIGNMENT GOAL
--------
+## *ASSIGNMENT GOAL*
+
 The goal of this assigment is to search and find a silver token and bring it near to a golden token so that in the final there will be golden and silver tokens distribuited in pairs.
 
-## ROBOT
------
+## *ROBOT*
 
-### Robot API
+
+### *Robot API*
 
 
 The API for controlling a simulated robot is designed to be as similar as possible to the [SR API][sr-api].
 
-### Motors ###
+### *Motors* ###
 
 The simulated robot has two motors configured for skid steering, connected to a two-output [Motor Board](https://studentrobotics.org/docs/kit/motor_board). The left motor is connected to output `0` and the right motor to output `1`.
 
@@ -36,7 +35,7 @@ R.motors[0].m0.power = 25
 R.motors[0].m1.power = -25
 ```
 
-### The Grabber ###
+### *The Grabber* ###
 
 The robot is equipped with a grabber, capable of picking up a token which is in front of the robot and within 0.4 metres of the robot's centre. To pick up a token, call the `R.grab` method:
 
@@ -51,7 +50,7 @@ To drop the token, call the `R.release` method.
 
 Cable-tie flails are not implemented.
 
-### Vision ###
+### *Vision* ###
 
 To help the robot find tokens and navigate, each token has markers stuck to it, as does each wall. The `R.see` method returns a list of all the markers the robot can see, as `Marker` objects. The robot can only see markers which it is facing towards.
 
@@ -70,11 +69,10 @@ Each `Marker` object has the following attributes:
 * `rot_y`: an alias for `centre.rot_y`
 * `timestamp`: the time at which the marker was seen (when `R.see` was called).
 
-## CODE ##
-------------
-### FLOWCHART ###
+## *CODE* ##
 
-Diagramma di flusso(1).png
+### *FLOWCHART* ###
+![Flowchart](Flowchart.png )
 
 
 At the beginning the program looks for the nearest silver token with the function:
@@ -97,13 +95,14 @@ These functions are iterated within the `while()` loops in the program until the
 
 Finally, when `cont==12`, the program ends.
 
-## FUTURE IMPROVEMENTS
------------------------
+## *FUTURE IMPROVEMENTS*
 In some positions, when blocks are in the middle of the robot's 'moving area, it could drag these tokens with it, creating **collisions**.
 
 To avoid this, special functions could be created to increasing its "**environmental awareness**".
 
 In addition, when the robot searches for the nearest block, if the block is close but behind the robot itself, the robot cannot see it. If, on the other hand, the robot had **360-degree vision**, then it would be able to see it and catch it, making the program more efficient.
 
-One more possible improvement could be
-Therefore, in order to achieve both improvements, as well as appropriate functions, it is necessary to **increase the robot's vision range**.
+Another possible improvement could be to create a map of the arena. If the robot could record the positions of the various tokens in the arena by creating a map of the arena itself, it would be much faster because it would no longer be necessary to scan the arena within each while cycle. 
+This would also allow a better path management, e.g. avoiding obstacles (represented in this case by the tokens themselves).
+ 
+Therefore, in order to achieve these improvements, as well as appropriate functions, it could be necessary to **increase the robot's vision range**.
