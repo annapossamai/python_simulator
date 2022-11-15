@@ -1,5 +1,5 @@
 
-# PYTHON ROBOT SIMULATOR
+# *PYTHON ROBOT SIMULATOR*
 
 > Professor Carmine Recchiuto, <p>Student: Anna Possamai
 
@@ -19,12 +19,12 @@ The goal of this assigment is to search and find a silver token and bring it nea
 ## *ROBOT*
 
 
-### Robot API
+### *Robot API*
 
 
 The API for controlling a simulated robot is designed to be as similar as possible to the [SR API][sr-api].
 
-### Motors ###
+### *Motors* ###
 
 The simulated robot has two motors configured for skid steering, connected to a two-output [Motor Board](https://studentrobotics.org/docs/kit/motor_board). The left motor is connected to output `0` and the right motor to output `1`.
 
@@ -35,7 +35,7 @@ R.motors[0].m0.power = 25
 R.motors[0].m1.power = -25
 ```
 
-### The Grabber ###
+### *The Grabber* ###
 
 The robot is equipped with a grabber, capable of picking up a token which is in front of the robot and within 0.4 metres of the robot's centre. To pick up a token, call the `R.grab` method:
 
@@ -50,7 +50,7 @@ To drop the token, call the `R.release` method.
 
 Cable-tie flails are not implemented.
 
-### Vision ###
+### *Vision* ###
 
 To help the robot find tokens and navigate, each token has markers stuck to it, as does each wall. The `R.see` method returns a list of all the markers the robot can see, as `Marker` objects. The robot can only see markers which it is facing towards.
 
@@ -69,9 +69,9 @@ Each `Marker` object has the following attributes:
 * `rot_y`: an alias for `centre.rot_y`
 * `timestamp`: the time at which the marker was seen (when `R.see` was called).
 
-## CODE ##
+## *CODE* ##
 
-### FLOWCHART ###
+### *FLOWCHART* ###
 ![Flowchart](Flowchart.png )
 
 
