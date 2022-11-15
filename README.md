@@ -73,8 +73,7 @@ Each `Marker` object has the following attributes:
 ## CODE ##
 ------------
 ### FLOWCHART ###
-
-Diagramma di flusso(1).png
+![Flowchart](python_simulator/Flowchart.png )
 
 
 At the beginning the program looks for the nearest silver token with the function:
