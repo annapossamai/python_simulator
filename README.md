@@ -105,4 +105,5 @@ To avoid this, special functions could be created to increasing its "**environme
 
 In addition, when the robot searches for the nearest block, if the block is close but behind the robot itself, the robot cannot see it. If, on the other hand, the robot had **360-degree vision**, then it would be able to see it and catch it, making the program more efficient.
 
+One more possible improvement could be
 Therefore, in order to achieve both improvements, as well as appropriate functions, it is necessary to **increase the robot's vision range**.
