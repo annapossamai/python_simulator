@@ -4,8 +4,7 @@
 > Professor Carmine Recchiuto, <p>Student: Anna Possamai
 
 
-## RUNNING THE CODE
----------
+## *RUNNING THE CODE*
 The simulator requires a Python 2.7 installation, the pygame library, PyPyBox2D, and PyYAML.
 
 You can run this project by write in the terminal this command:
@@ -13,12 +12,12 @@ You can run this project by write in the terminal this command:
 $ python run.py Assignment.py
 ```
 
-## ASSIGNMENT GOAL
--------
+## *ASSIGNMENT GOAL*
+
 The goal of this assigment is to search and find a silver token and bring it near to a golden token so that in the final there will be golden and silver tokens distribuited in pairs.
 
-## ROBOT
------
+## *ROBOT*
+
 
 ### Robot API
 
@@ -71,7 +70,7 @@ Each `Marker` object has the following attributes:
 * `timestamp`: the time at which the marker was seen (when `R.see` was called).
 
 ## CODE ##
-------------
+
 ### FLOWCHART ###
 ![Flowchart](Flowchart.png )
 
@@ -96,8 +95,7 @@ These functions are iterated within the `while()` loops in the program until the
 
 Finally, when `cont==12`, the program ends.
 
-## FUTURE IMPROVEMENTS
------------------------
+## *FUTURE IMPROVEMENTS*
 In some positions, when blocks are in the middle of the robot's 'moving area, it could drag these tokens with it, creating **collisions**.
 
 To avoid this, special functions could be created to increasing its "**environmental awareness**".
